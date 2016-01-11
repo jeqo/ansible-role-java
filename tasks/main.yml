@@ -1,0 +1,5 @@
+---
+# tasks file for java
+- include: install-oracle-java.yml
+  become: true
+  become_user: root

@@ -1,0 +1,5 @@
+---
+# defaults file for java
+java_version: 7
+java_update:
+java_build:
