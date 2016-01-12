@@ -4,7 +4,7 @@
   yum: name=curl state=present
 
 - name: download oracle java rpm
-  command: 'curl -v -j -k -L -H "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/{{ java_version }}u{{ java_update }}-{{ java_build }}/jdk-{{ java_version }}u{{ java_update }}-linux-x64.rpm -o /tmp/jdk.rpm'
+  command: 'curl -v -j -k -L -H "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/{{ java_version }}u{{ java_update }}-b{{ java_build }}/jdk-{{ java_version }}u{{ java_update }}-linux-x64.rpm -o /tmp/jdk.rpm'
 
 - name: install oracle java jdk
   yum: name=/tmp/jdk.rpm state=present

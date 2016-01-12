@@ -1,0 +1,12 @@
+---
+#
+- name: test install oracle java 8 66 on centos 7
+  hosts: 127.0.0.1
+
+  vars:
+    java_version: 8
+    java_update: 66
+    java_build: 17
+
+  tasks:
+    - include: tasks/main.yml
