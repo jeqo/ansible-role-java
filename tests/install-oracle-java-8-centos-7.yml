@@ -1,0 +1,8 @@
+---
+#
+- name: test install oracle java 8 on centos 7
+  hosts: 127.0.0.1
+
+  roles:
+    - role: java
+      java_version: 8
