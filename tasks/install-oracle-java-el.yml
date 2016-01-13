@@ -17,13 +17,20 @@
 - name: install curl
   yum: name=curl state=present
 
+- stat: "path=/tmp/jdk-{{ java_version }}.rpm"
+  register: rpm_stat
+
+- debug:
+    var: rpm_stat
+
 - name: download oracle java rpm
-  shell: 'curl -v -j -k -L -H "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/{{ java_version }}u{{ java_update }}-b{{ java_build }}/jdk-{{ java_version }}u{{ java_update }}-linux-x64.rpm -o /tmp/jdk.rpm'
+  shell: 'curl -v -j -k -L -H "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/{{ java_version }}u{{ java_update }}-b{{ java_build }}/jdk-{{ java_version }}u{{ java_update }}-linux-x64.rpm -o /tmp/jdk-{{ java_version }}.rpm'
   args:
-    creates: /tmp/jdk.rpm
+    creates: /tmp/jdk-{{ java_version }}.rpm
+  when: rpm_stat.stat.exists == false
 
 - name: install oracle java jdk
-  yum: name=/tmp/jdk.rpm state=present
+  yum: name=/tmp/jdk-{{ java_version }}.rpm state=present
 
 - name: set java home
   lineinfile:
