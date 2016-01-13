@@ -1,0 +1,24 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure(2) do |config|
+
+  config.vm.define "test01" do |test01|
+    test01.vm.box = "jeqo/centos-7"
+
+    test01.vm.provider "virtualbox" do |vb|
+      vb.cpus = 1
+      vb.memory = "512"
+    end
+
+    test01.vm.provision "ansible_local" do |ansible|
+      ansible.playbook = "test.yml"
+      ansible.galaxy_role_file = "roles.yml"
+      ansible.extra_vars = {
+        java_version: 8,
+        java_update: 66,
+        java_build: 17
+      }
+    end
+  end
+end
