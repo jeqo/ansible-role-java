@@ -1,10 +1,18 @@
 ---
 #
+- debug:
+    var: java_version
+
 - set_fact: java_update="{{ java_7_update }}" java_build="{{ java_7_build }}"
   when: java_version == '7'
 
 - set_fact: java_update="{{ java_8_update }}" java_build="{{ java_8_build }}"
   when: java_version == '8'
+
+- debug:
+    var: java_update
+- debug:
+    var: java_build
 
 - name: install curl
   yum: name=curl state=present
