@@ -15,6 +15,9 @@
 - name: install oracle java jdk
   apt: name=oracle-java{{ java_version }}-installer update_cache=yes
 
+- set_fact:
+    java_home: "/usr/lib/jvm/java-{{ java_version}}-oracle"
+
 - name: set java home
   lineinfile:
    dest: "{{ ansible_env.HOME }}/.profile"
@@ -22,6 +25,6 @@
    line: "{{ item.start }}{{ item.end }}"
    insertbefore: "export PATH"
   with_items:
-   - { start: "JAVA_HOME=", end: "/usr/lib/jvm/java-{{ java_version}}-oracle" }
+   - { start: "JAVA_HOME=", end: "{{ java_home }}" }
    - { start: "PATH=$JAVA_HOME/bin:", end: "$PATH" }
    - { start: "export JAVA_HOME", end: "" }

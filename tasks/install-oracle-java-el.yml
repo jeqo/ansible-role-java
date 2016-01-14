@@ -3,34 +3,53 @@
 - debug:
     var: java_version
 
-- set_fact: java_update="{{ java_7_update }}" java_build="{{ java_7_build }}"
+- set_fact:
+    java_update: "{{ java_7_update }}"
+    java_build: "{{ java_7_build }}"
   when: java_version == 7
 
-- set_fact: java_update="{{ java_8_update }}" java_build="{{ java_8_build }}"
+- set_fact:
+    java_update: "{{ java_8_update }}"
+    java_build: "{{ java_8_build }}"
   when: java_version == 8
+
+- set_fact:
+    java_home: "/usr/java/jdk1.{{ java_version }}.0_{{ java_update }}"
+    java_rpm: "/tmp/jdk-{{ java_version }}.rpm"
 
 - debug:
     var: java_update
 - debug:
     var: java_build
+- debug:
+    var: java_home
+- debug:
+    var: java_rpm
+
+- stat: "path={{ java_home }}/bin/java"
+  register: java_file
+
+- debug:
+    var: java_file
+
+- stat: "path={{ java_rpm }}"
+  register: rpm_file
+
+- debug:
+    var: rpm_file
 
 - name: install curl
   yum: name=curl state=present
 
-- stat: "path=/tmp/jdk-{{ java_version }}.rpm"
-  register: rpm_stat
-
-- debug:
-    var: rpm_stat
-
 - name: download oracle java rpm
-  shell: 'curl -v -j -k -L -H "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/{{ java_version }}u{{ java_update }}-b{{ java_build }}/jdk-{{ java_version }}u{{ java_update }}-linux-x64.rpm -o /tmp/jdk-{{ java_version }}.rpm'
-  args:
-    creates: /tmp/jdk-{{ java_version }}.rpm
-  when: rpm_stat.stat.exists == false
+  get_url:
+    url: "http://download.oracle.com/otn-pub/java/jdk/{{ java_version }}u{{ java_update }}-b{{ java_build }}/jdk-{{ java_version }}u{{ java_update }}-linux-x64.rpm"
+    dest: "/tmp/jdk-{{ java_version }}.rpm"
+    headers: "Cookie:oraclelicense=accept-securebackup-cookie"
+  when: java_file.stat.exists == false and rpm_file.stat.exists == false
 
 - name: install oracle java jdk
-  yum: name=/tmp/jdk-{{ java_version }}.rpm state=present
+  yum: name={{ java_rpm }} state=present
 
 - name: set java home
   lineinfile:
@@ -39,6 +58,6 @@
    line: "{{ item.start }}{{ item.end }}"
    insertbefore: "export PATH"
   with_items:
-   - { start: "JAVA_HOME=", end: "/usr/java/jdk1.{{ java_version }}.0_{{ java_update }}" }
+   - { start: "JAVA_HOME=", end: "{{ java_home }}" }
    - { start: "PATH=$JAVA_HOME/bin:", end: "$PATH" }
    - { start: "export JAVA_HOME", end: "" }
