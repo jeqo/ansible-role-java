@@ -38,9 +38,6 @@
 - debug:
     var: rpm_file
 
-- name: install curl
-  yum: name=curl state=present
-
 - name: download oracle java rpm
   get_url:
     url: "http://download.oracle.com/otn-pub/java/jdk/{{ java_version }}u{{ java_update }}-b{{ java_build }}/jdk-{{ java_version }}u{{ java_update }}-linux-x64.rpm"
