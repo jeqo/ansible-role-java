@@ -8,5 +8,5 @@
   when: ansible_os_family == "Debian"
 
 
-- include: install-oracle-java-el.yml
+- include: install-oracle-java-redhat.yml
   when: ansible_os_family == "RedHat"
