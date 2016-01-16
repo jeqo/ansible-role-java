@@ -40,7 +40,7 @@
 
 - name: download oracle java rpm
   get_url:
-    url: "http://download.oracle.com/otn-pub/java/jdk/{{ java_version }}u{{ java_update }}-b{{ java_build }}/jdk-{{ java_version }}u{{ java_update }}-linux-x64.rpm"
+    url: "http://download.oracle.com/otn-pub/java/jdk/{{ java_version }}u{{ java_update }}-b{{ java_build }}/{{ java_type }}-{{ java_version }}u{{ java_update }}-linux-x64.rpm"
     dest: "/tmp/jdk-{{ java_version }}.rpm"
     headers: "Cookie:oraclelicense=accept-securebackup-cookie"
   when: java_file.stat.exists == false and rpm_file.stat.exists == false
