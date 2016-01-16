@@ -18,11 +18,11 @@
     package_name: java-1.{{ java_version }}.0-openjdk{{ java_package_posix }}
   when: ansible_os_family == "RedHat"
 
-- name: install oracle java jdk
+- name: install openjdk
   apt: name={{ package_name }}
   when: ansible_os_family == "Debian"
 
-- name: install oracle java jdk
+- name: install openjdk
   yum: name={{ package_name }}
   when: ansible_os_family == "RedHat"
 
