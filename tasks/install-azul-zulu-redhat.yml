@@ -12,6 +12,6 @@
   yum: name=zulu-{{ java_version }}
 
 - set_fact:
-    java_home: "/usr/java/zulu-{{ java_version }}"
+    java_home: "/usr/lib/jvm/zulu-{{ java_version }}"
 
 - include: set-java-home.yml
