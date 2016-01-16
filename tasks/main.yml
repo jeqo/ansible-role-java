@@ -3,7 +3,7 @@
 - debug:
     var: java_provider
 
-- include: install-java-oracle.yml
+- include: install-oracle-java.yml
   become: true
   become_user: root
   when: java_provider == "oracle"
