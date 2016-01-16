@@ -3,11 +3,11 @@
 ---
 #
 - set_fact:
-    profile_file: {{ ansible_env.HOME }}/.profile
+    profile_file: "{{ ansible_env.HOME }}/.profile"
   when: ansible_os_family == "Debian"
 
 - set_fact:
-    profile_file: {{ ansible_env.HOME }}/.bash_profile
+    profile_file: "{{ ansible_env.HOME }}/.bash_profile"
   when: ansible_os_family == "RedHat"
 
 - name: set java home
