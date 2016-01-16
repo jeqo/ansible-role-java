@@ -1,9 +1,10 @@
----
+
+  java_provider: azul---
 #
 - name: test install oracle java 8 on centos 7
   hosts: 127.0.0.1
 
   roles:
     - role: java
-      java_provider: oracle
+      java_provider: azul
       java_version: 8

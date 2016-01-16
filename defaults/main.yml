@@ -1,3 +1,4 @@
 ---
 # defaults file for java
-java_version: # Supported versions: 7 and 8
+java_provider: azul #oracle azul (TODO: include openjdk)
+java_version: 8 # Supported versions: 7 and 8

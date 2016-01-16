@@ -4,13 +4,13 @@
     var: java_version
 
 - set_fact:
-    java_update: "{{ java_7_update }}"
-    java_build: "{{ java_7_build }}"
+    java_update: "{{ java_oracle_7_update }}"
+    java_build: "{{ java_oracle_7_build }}"
   when: java_version == 7
 
 - set_fact:
-    java_update: "{{ java_8_update }}"
-    java_build: "{{ java_8_build }}"
+    java_update: "{{ java_oracle_8_update }}"
+    java_build: "{{ java_oracle_8_build }}"
   when: java_version == 8
 
 - set_fact:
@@ -49,13 +49,4 @@
   yum: name={{ java_rpm }} state=present
   when: java_file.stat.exists == false
 
-- name: set java home
-  lineinfile:
-   dest: "{{ ansible_env.HOME }}/.bash_profile"
-   regexp: "^{{ item.start }}"
-   line: "{{ item.start }}{{ item.end }}"
-   insertbefore: "export PATH"
-  with_items:
-   - { start: "JAVA_HOME=", end: "{{ java_home }}" }
-   - { start: "PATH=$JAVA_HOME/bin:", end: "$PATH" }
-   - { start: "export JAVA_HOME", end: "" }
+- include: set-java-home.yml

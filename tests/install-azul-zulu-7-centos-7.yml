@@ -5,5 +5,5 @@
 
   roles:
     - role: java
-      java_provider: oracle
-      java_version: 8
+      java_provider: azul
+      java_version: 7

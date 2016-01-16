@@ -1,5 +1,14 @@
 ---
 # tasks file for java
-- include: install-oracle-java.yml
+- debug:
+    var: java_provider
+
+- include: install-java-oracle.yml
   become: true
   become_user: root
+  when: java_provider == "oracle"
+
+- include: install-azul-zulu.yml
+  become: true
+  become_user: root
+  when: java_provider == "azul"
