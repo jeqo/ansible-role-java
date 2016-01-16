@@ -1,7 +1,5 @@
 ---
 #
----
-#
 - set_fact:
     profile_file: "{{ ansible_env.HOME }}/.profile"
   when: ansible_os_family == "Debian"
