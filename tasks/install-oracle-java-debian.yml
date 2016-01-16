@@ -17,5 +17,3 @@
 
 - set_fact:
     java_home: "/usr/lib/jvm/java-{{ java_version}}-oracle"
-
-- include: set-java-home.yml

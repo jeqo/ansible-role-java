@@ -28,5 +28,3 @@
 
 - set_fact:
     java_home: "/usr/lib/jvm/{{ java_home_prefix }}-1.{{ java_version }}.0-openjdk-amd64"
-
-- include: set-java-home.yml

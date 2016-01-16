@@ -48,5 +48,3 @@
 - name: install oracle java jdk
   yum: name={{ java_rpm }} state=present
   when: java_file.stat.exists == false
-
-- include: set-java-home.yml
