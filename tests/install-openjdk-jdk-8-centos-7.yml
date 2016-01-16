@@ -1,7 +1,0 @@
----
-#
-- name: test install oracle java 8 on centos 7
-  hosts: all
-
-  roles:
-    - role: java
