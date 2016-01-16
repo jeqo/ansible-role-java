@@ -12,3 +12,5 @@
   become: true
   become_user: root
   when: java_provider == "azul"
+
+- include: set-java-home.yml
