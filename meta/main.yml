@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  author: jorge quilcate (quilcate.jorge@gmail.com)
+  author: jeqo (quilcate.jorge@gmail.com)
   description: java role to install and configure java from different providers (oracle, openjdk, azul) in linux distributions (el and ubuntu).
   company:
   license: MIT
