@@ -1,21 +1,17 @@
 ---
 galaxy_info:
-  author: jorge quilcate
-  description: java role
-  company: sysco as
+  author: jorge quilcate (quilcate.jorge@gmail.com)
+  description: java role to install and configure java from different providers (oracle, openjdk, azul) in linux distributions: el and ubuntu.
+  company:
   license: MIT
-  min_ansible_version: 1.2
+  min_ansible_version: 2.0
   platforms:
   - name: EL
     versions:
-    - 6
-    - 7
+    - all
   - name: Ubuntu
     versions:
     - all
   categories:
   - development
 dependencies: []
-  # List your role dependencies here, one per line.
-  # Be sure to remove the '[]' above if you add dependencies
-  # to this list.
