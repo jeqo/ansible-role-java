@@ -11,10 +11,16 @@
 - name: set java home
   lineinfile:
    dest: "{{ profile_file }}"
-   regexp: "^{{ item.start }}"
-   line: "{{ item.start }}{{ item.end }}"
+   regexp: "{{ item.regexp }}"
+   line: "{{ item.line }}"
    insertbefore: "export PATH"
   with_items:
-   - { start: "JAVA_HOME=", end: "{{ java_home }}" }
-   - { start: "PATH=$JAVA_HOME/bin:", end: "$PATH" }
-   - { start: "export JAVA_HOME", end: "" }
+    -
+      regexp: ^JAVA_HOME=
+      line: "JAVA_HOME={{ java_home }}"
+    -
+      regexp: ^PATH=\$JAVA_HOME/bin:
+      line: PATH=$JAVA_HOME/bin:$PATH
+    -
+      regexp: ^export JAVA_HOME
+      line: export JAVA_HOME
