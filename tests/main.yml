@@ -77,3 +77,11 @@
       java_provider: azul
       java_version: 7
       java_type: jdk
+
+- name: test install oracle jdk 8 on ubuntu 14
+  hosts: test11
+  roles:
+    - role: java
+      java_provider: oracle
+      java_version: 8
+      java_type: jdk

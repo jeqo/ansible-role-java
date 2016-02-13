@@ -12,10 +12,12 @@
 
 - set_fact:
     package_name: openjdk-{{ java_version }}-{{ java_type }}
+    arch: -amd64
   when: ansible_os_family == "Debian"
 
 - set_fact:
     package_name: java-1.{{ java_version }}.0-openjdk{{ java_package_posix }}
+    arch: 
   when: ansible_os_family == "RedHat"
 
 - name: install openjdk (debian)
@@ -27,4 +29,4 @@
   when: ansible_os_family == "RedHat"
 
 - set_fact:
-    java_home: "/usr/lib/jvm/{{ java_home_prefix }}-1.{{ java_version }}.0-openjdk"
+    java_home: "/usr/lib/jvm/{{ java_home_prefix }}-1.{{ java_version }}.0-openjdk{{ arch }}"
