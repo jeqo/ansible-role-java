@@ -21,7 +21,7 @@
       regexp: ^JAVA_HOME=
       line: "JAVA_HOME={{ java_home }}"
     -
-      regexp: ^PATH=\$JAVA_HOME/bin:
+      regexp: ^PATH=\$JAVA_HOME/bin
       line: PATH=$JAVA_HOME/bin:$PATH
     -
       regexp: ^export JAVA_HOME
