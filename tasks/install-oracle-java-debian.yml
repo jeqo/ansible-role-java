@@ -7,7 +7,8 @@
   apt_repository: repo='ppa:webupd8team/java'
 
 - debconf: name=shared question='shared/accepted-oracle-license-v1-1' value=true vtype='select'
-- debconf: name=shared question='shared/accepted-oracle-license-v1-1' value=true vtype='seen'
+
+#- debconf: name=shared question='shared/accepted-oracle-license-v1-1' value=true vtype='seen'
 
 - name: install oracle java jdk
   apt: name=oracle-java{{ java_version }}-installer update_cache=yes

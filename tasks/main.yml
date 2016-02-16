@@ -4,15 +4,15 @@
     var: java_provider
 
 - include: install-openjdk.yml
-  become: true
+  become: yes
   when: java_provider == "openjdk"
 
 - include: install-oracle-java.yml
-  become: true
+  become: yes
   when: java_provider == "oracle"
 
 - include: install-azul-zulu.yml
-  become: true
+  become: yes
   when: java_provider == "azul"
 
 - include: set-java-home.yml
