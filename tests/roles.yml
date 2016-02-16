@@ -1,4 +1,4 @@
 
 # Install a role from the Ansible Galaxy
-- src: jeqo.java
+- src: https://github.com/jeqo/ansible-role-java
   name: java
