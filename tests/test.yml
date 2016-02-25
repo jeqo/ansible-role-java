@@ -87,3 +87,11 @@
       java_provider: oracle
       java_version: 8
       java_type: jdk
+
+- name: test install azul zulu 8 on ubuntu 14
+  hosts: test12
+  roles:
+    - role: java
+      java_provider: azul
+      java_version: 8
+      java_type: jdk
