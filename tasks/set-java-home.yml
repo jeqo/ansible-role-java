@@ -1,6 +1,7 @@
 ---
 #
-- debug: msg="JAVA_HOME={{ java_home }}"
+- debug:
+    msg: "JAVA_HOME={{ java_home }}"
 
 - set_fact:
     profile_file: "{{ ansible_env.HOME }}/.profile"

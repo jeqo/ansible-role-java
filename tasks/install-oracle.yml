@@ -1,0 +1,6 @@
+---
+# task file for install oracle java
+- debug:
+    var: ansible_os_family
+
+- include: install-oracle-{{ ansible_os_family }}.yml

@@ -1,0 +1,10 @@
+---
+#
+
+- debug:
+    var: ansible_os_family
+
+- fail: message="jre is not valid with zulu provider"
+  when: java_type == "jre"
+
+- include: install-azul-{{ ansible_os_family }}.yml

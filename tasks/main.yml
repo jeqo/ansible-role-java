@@ -1,18 +1,8 @@
 ---
 # tasks file for java
 - debug:
-    var: java_provider
+    msg: "This Java Provider will be installed: {{ java_provider }}"
 
-- include: install-openjdk.yml
-  become: yes
-  when: java_provider == "openjdk"
-
-- include: install-oracle-java.yml
-  become: yes
-  when: java_provider == "oracle"
-
-- include: install-azul-zulu.yml
-  become: yes
-  when: java_provider == "azul"
+- include: install-{{ java_provider }}.yml
 
 - include: set-java-home.yml
