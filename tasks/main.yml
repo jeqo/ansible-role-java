@@ -4,5 +4,6 @@
     msg: "This Java Provider will be installed: {{ java_provider }}"
 
 - include: install-{{ java_provider }}.yml
+  become: yes
 
 - include: set-java-home.yml
