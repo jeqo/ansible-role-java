@@ -12,6 +12,7 @@
   apt:
     name: zulu-{{ java_version }}
     force: yes
+    update_cache: yes
 
 - set_fact:
     java_home: "/usr/lib/jvm/zulu-{{ java_version }}-amd64"
