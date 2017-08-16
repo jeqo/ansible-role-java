@@ -11,6 +11,10 @@
     profile_file: "{{ ansible_env.HOME }}/.bash_profile"
   when: ansible_os_family == "RedHat"
 
+- file:
+    path: "{{ profile_file }}"
+    state: touch
+
 - name: set java home
   lineinfile:
    dest: "{{ profile_file }}"
