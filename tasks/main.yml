@@ -6,4 +6,4 @@
 - include: install-{{ java_provider }}.yml
   become: yes
 
-- include: set-java-home.yml
+#- include: set-java-home.yml
